@@ -1,0 +1,21 @@
+version: '3'
+services:
+  react-app:
+    build:
+      # option-1
+      context: . # look at the current directory for a Dockerfile
+      # option-2
+      dockerfile: Dockerfile.dev # find a file with that name and use it to build the image
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
