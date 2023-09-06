@@ -12,6 +12,6 @@ jobs:
     - uses: actions/checkout@v3
     - uses: docker
     - name: Build the Docker image
-      run: docker build --file Dockerfile.dev --tag simple-frontend:$(date +%s)
+      run: docker build --file Dockerfile.dev --tag simple-frontend
     - name: Run tests
       run: docker run -e CI=true simple-frontend npm run test
