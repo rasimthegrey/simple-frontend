@@ -7,11 +7,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    container: node:16-alpine
     steps:
-    - uses: actions/checkout@v3
-    - uses: docker
-    - name: Build the Docker image
-      run: docker build --file Dockerfile.dev --tag simple-frontend
-    - name: Run tests
-      run: docker run -e CI=true simple-frontend npm run test
+      - name: Check out repo code
+        uses: actions/checkout@v3
+        
+      - name: Build the docker image
+        run: docker build -t simple-frontend .
+
+      - name: Run the image and test the code
+        run: docker run simple-frontend npm run test
