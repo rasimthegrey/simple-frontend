@@ -1,0 +1,26 @@
+name: Simple Frontend CI
+run-name: Building and testing the ${{ github.repository }}
+on:
+    push:
+        branches:
+            - features
+    pull_request:
+        branches:
+            - master
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Get the code
+              uses: actions/checkout@v3
+            - name: Install Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: '18'
+            - name: Install dependencies
+              run: npm ci
+            - name: Run Build
+              run: npm run build --if-present
+            - name: Run Tests
+              run: npm test
