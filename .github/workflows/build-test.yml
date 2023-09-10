@@ -3,6 +3,7 @@ run-name: Building and testing the ${{ github.repository }}
 on:
     push:
         branches:
+            - master
             - features
     pull_request:
         branches:
