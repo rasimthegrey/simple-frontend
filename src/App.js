@@ -10,6 +10,7 @@ function App() {
           This is a CI test!
         </p>
         <p>Continuous Integration and Continuous Deployment</p>
+        <p>:D</p>
       </header>
     </div>
   );
